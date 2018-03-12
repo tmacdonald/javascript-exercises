@@ -25,7 +25,12 @@ xit("should take in account order", done => {
     const intercepted = intercept(interceptee, [interceptor2, interceptor1])
 
     intercepted('a').then(result => {
-        expect(result).toEqual('acbdfe') // Note that subtle order difference here
+        // Note that subtle order difference here
+        // Also note that the first interceptor will run their input modification first
+        // but their return modification last
+        // input: a -> ac (interceptor2) -> acb (interceptor1)
+        // output: acbd (interceptee) -> acbdf (interceptor1) -> acbdfe (interceptor2)
+        expect(result).toEqual('acbdfe') 
         done()
     })
 })
