@@ -3,7 +3,7 @@ import { intercept } from './intercept-4'
 // This one is a bit more challenging
 // see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters for a hint
 
-function interceptee(a, b) {
+function A(a, b) {
     return new Promise(resolve => resolve(a + b))
 }
 

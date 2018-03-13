@@ -1,6 +1,6 @@
 import { intercept } from './intercept-2'
 
-function interceptee(input) {
+function A(input) {
     return new Promise(resolve => resolve(input + 'c'))
 }
 
