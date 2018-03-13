@@ -18,7 +18,7 @@ function sumPromise(a, b) {
 
 Let's say for instance that sumPromise took two numbers and summed them. Imagine that we actually wanted to pass two strings and return the sum of their lengths. We could simply pass the lengths of the strings as parameters to A, but suppose we wanted something reusable.
 
-We also have an interceptor function. The interceptor function takes as arguments the same arguments as A along with an addition function that has the same API as A (same arguments and  eturns a promise). It will also return a promise.
+We also have an interceptor function. The interceptor function takes as arguments the same arguments as A along with an addition function that has the same API as A (same arguments and returns a promise). It will also return a promise.
 
 Imagine that we had a client that wanted to call sumPromise with strings, and have the response a Promise that would resolve to a string.
 
