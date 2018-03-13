@@ -1,4 +1,4 @@
-function intercept(interceptee, interceptor) {
+function intercept(functionToWrap, interceptor) {
 }
 
 export { intercept }

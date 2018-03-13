@@ -1,6 +1,6 @@
-import { intercept } from './intercept-2'
+import { intercept } from './exercise-2'
 
-function A(input) {
+function functionToWrap(input) {
     return new Promise(resolve => resolve(input + 'c'))
 }
 
@@ -9,7 +9,7 @@ function interceptor(input, next) {
 }
 
 xit("should intercept a single parameter function and modify the result", done => {
-    const intercepted = intercept(interceptee, interceptor)
+    const intercepted = intercept(functionToWrap, interceptor)
 
     intercepted('a').then(result => {
         expect(result).toEqual('abcd')

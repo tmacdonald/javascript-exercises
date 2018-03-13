@@ -1,7 +1,7 @@
-import { intercept } from './intercept-1'
+import { intercept } from './exercise-1'
 
 // A is the function that will be wrapped
-function A() {
+function functionToWrap() {
     return new Promise(resolve => resolve('e'))
 }
 
@@ -15,14 +15,14 @@ function interceptor2(next) {
     return next().then(x => 'f' + x + 'd')
 }
 
-xit("should return a function", () => {
-    const intercepted = intercept(interceptee, interceptor1)
+it("should return a function", () => {
+    const intercepted = intercept(functionToWrap, interceptor1)
 
     expect(typeof intercepted == "function").toBe(true)
 })
 
-xit("should intercept a parameterless function and modify the result", done => {
-    const intercepted = intercept(interceptee, interceptor1)
+it("should intercept a parameterless function and modify the result", done => {
+    const intercepted = intercept(functionToWrap, interceptor1)
 
     intercepted().then(result => {
         expect(result).toEqual('red')
@@ -30,8 +30,8 @@ xit("should intercept a parameterless function and modify the result", done => {
     })
 })
 
-xit("should work with a different interceptor", done => {
-    const intercepted = intercept(interceptee, interceptor2)
+it("should work with a different interceptor", done => {
+    const intercepted = intercept(functionToWrap, interceptor2)
 
     intercepted().then(result => {
         expect(result).toEqual('fed')

@@ -1,6 +1,6 @@
-import { intercept } from './intercept-3'
+import { intercept } from './exercise-3'
 
-function A(input) {
+function functionToWrap(input) {
     return new Promise(resolve => resolve(input + 'd'))
 }
 
@@ -13,7 +13,7 @@ function interceptor2(input, next) {
 }
 
 xit("should intercept a single parameter function and modify the result", done => {
-    const intercepted = intercept(interceptee, [interceptor1, interceptor2])
+    const intercepted = intercept(functionToWrap, [interceptor1, interceptor2])
 
     intercepted('a').then(result => {
         expect(result).toEqual('abcdef')
@@ -22,7 +22,7 @@ xit("should intercept a single parameter function and modify the result", done =
 })
 
 xit("should take in account order", done => {
-    const intercepted = intercept(interceptee, [interceptor2, interceptor1])
+    const intercepted = intercept(functionToWrap, [interceptor2, interceptor1])
 
     intercepted('a').then(result => {
         // Note that subtle order difference here
